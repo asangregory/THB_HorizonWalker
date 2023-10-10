@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<save>
+	<version major="4" minor="0" revision="9" build="328"/>
+	<region id="SpellLists">
+		<node id="root">
+			<children>
+				<node id="SpellList">
+					<attribute id="Comment" type="LSString" value="Horizon Walker Lvl 3"/>
+					<attribute id="Spells" type="LSString" value="Target_ProtectionFromEvilAndGood;Target_PlanarWarriorsMark;Teleportation_PlanarGate;Shout_EtherealStep;"/>
+					<attribute id="UUID" type="guid" value="196e8941-d599-4e52-8740-d5ffbe4485fb"/>
+				</node>
+				<node id="SpellList">
+					<attribute id="Comment" type="LSString" value="Horizon Walker Lvl 5"/>
+					<attribute id="Spells" type="LSString" value="Target_MistyStep"/>
+					<attribute id="UUID" type="guid" value="6f97a274-0cc2-4ad8-b70a-18790688325d"/>
+				</node>
+				<node id="SpellList">
+					<attribute id="Comment" type="LSString" value="Horizon Walker Lvl 7"/>
+					<attribute id="Spells" type="LSString" value="Shout_EtherealStep"/>
+					<attribute id="UUID" type="guid" value="bb4c1217-f5b5-42ae-a607-d51621f3e0d0"/>
+				</node>
+				<node id="SpellList">
+					<attribute id="Comment" type="LSString" value="Horizon Walker Lvl 9"/>
+					<attribute id="Spells" type="LSString" value="Target_Haste"/>
+					<attribute id="UUID" type="guid" value="61a923b4-9a71-473f-a773-b5d570c7438a"/>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>
