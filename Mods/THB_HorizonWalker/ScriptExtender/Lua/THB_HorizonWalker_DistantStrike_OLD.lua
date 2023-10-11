@@ -1,7 +1,7 @@
 -- Table to store distant strikers to prevent issues with more than one horizon walker using distant strike at once.
 distantStrikers = {}
 -- Character information for the individual distant strikers.
-distantStriker = { preCastX = nil, preCastY = nil, preCastZ = nil, currentTarget = nil, targetList = {}, targetCount = 0, distantStrikeCharges = 0 }
+distantStriker = { charGUID = nil, preCastX = nil, preCastY = nil, preCastZ = nil, preCastActionPoints = 0, preCastExtraAttack = false, currentTarget = nil, awaitingAttack = false, targetList = {}, targetCount = 0, distantStrikeCharges = 0 }
 
 function distantStriker:new(char)
     char = char or {}
@@ -14,15 +14,23 @@ function distantStrikerInfo(GUID)
     local entity = tostring(Ext.Entity.Get(tostring(GUID)))
     if (distantStrikers[entity] == nil) then
         distantStrikers[entity] = distantStriker:new()
+        distantStrikers[entity].charGUID = GUID
     end
     return distantStrikers[entity]
+end
+
+function isDistantStriker(GUID)
+    local entity = tostring(Ext.Entity.Get(tostring(GUID)))
+    return distantStrikers[entity] ~= nil or isTrue(Osi.HasPassive(GUID, "DistantStrike") == 1)
 end
 
 -- Add distant strikers on turn start to gather their info.
 -- This should also create a new 'distantStrikerInfo' instance every turn so that info does not carry over turns.
 Ext.Osiris.RegisterListener("TurnStarted", 1, "before", function (character)
     if (isTrue(Osi.HasPassive(character, "DistantStrike") == 1)) then
-        distantStrikerInfo(character)
+        local entity = tostring(Ext.Entity.Get(tostring(character)))
+        distantStrikers[entity] = distantStriker:new()
+        -- This should safely wipe the distant striker's info each turn.
     end
 end)
 
@@ -34,13 +42,28 @@ Ext.Osiris.RegisterListener("CombatEnded", 1, "after", function (combatGUID)
 end)
 
 Ext.Osiris.RegisterListener("UsingSpell", 5, "before", function (character, spell, spellType, spellElement, storyActionID)
-    if (spell == "Teleportation_DistantStrike") then
-        -- Set the caster's pre cast positions in case of inability to execute / specified failure.
-        local x, y, z = Osi.GetPosition(tostring(character))
+    if (isTrue(Osi.HasPassive(character, "DistantStrike") == 1)) then
+
         local char = distantStrikerInfo(character)
-        char.preCastX = x
-        char.preCastY = y
-        char.preCastZ = z
+
+        if (spell == "Teleportation_DistantStrike") then
+            -- Set the caster's pre cast positions in case of inability to execute / specified failure.
+            local x, y, z = Osi.GetPosition(tostring(character))
+            char.preCastX = x
+            char.preCastY = y
+            char.preCastZ = z
+            char.preCastActionPoints = getActionPointCount(character)
+            char.preCastExtraAttack = hasAnyExtraAttack(character)
+        end
+
+        -- To detect if an attack cast never happened within a distant strike cast.
+        if (char.awaitingAttack and spell == "Target_MainHandAttack" or spell == "Projectile_MainHandAttack") then
+            Osi.RemoveStatus(character, "EXTRA_DISTANT_STRIKE_BLOCK_MOVEMENT", character)
+            char.currentTarget = nil
+            char.awaitingAttack = false
+            Osi.TimerCancel(tostring(character))
+        end
+
     end
 end)
 
@@ -56,54 +79,77 @@ end)
 -- TODO: Maybe put a handler here that saves the characters last action points/extra distant strike status?
 Ext.Osiris.RegisterListener("CastedSpell", 5, "after", function(character, spell, spellType, spellElement, storyActionID)
 
-    if (spell == "Teleportation_DistantStrike") then
-        local char = distantStrikerInfo(character)
-        if (char.currentTarget == nil) then
-            TeleportBack(character)
-        else
-            local target = char.currentTarget
-            local rangeToTarget = Osi.GetDistanceTo(character, target)
-            local isInMeleeRange = rangeToTarget <= 2.5 -- TODO: Replace this 19 with character's melee weapon range when it is gettable
-            local hasRangedWeapon = isTrue(Osi.HasRangedWeaponEquipped(character, "Mainhand"))
-            local hasMeleeWeapon = isTrue(Osi.HasMeleeWeaponEquipped(character, "Mainhand"))
-            if (rangeToTarget > 19) then -- TODO: Replace this 19 with character's ranged weapon range when it is gettable
-                TeleportBack(character)
-                ClearDistantStrikeTarget(target)
+    if isDistantStriker(character) then
+
+        if (spell == "Teleportation_DistantStrike") then
+
+            local char = distantStrikerInfo(character)
+            local castingFailed = false
+            if (char.currentTarget == nil
+                    or not isTrue(Osi.CanSee(character, char.currentTarget))
+                    or not isTrue(Osi.HasLineOfSight(character, char.currentTarget)))
+            then
+                print("Casting failed 1")
+                teleportBack(character)
             else
-                if (hasRangedWeapon) then
-                    if (isInMeleeRange and hasMeleeWeapon) then
-                        -- TODO: Make reaction here and ask user if they want to use ranged
-                        makeDistantStrikeAttack("Melee", character, target)
-                    else
-                        makeDistantStrikeAttack("Ranged", character, target)
-                    end
+                local rangeToTarget = Osi.GetDistanceTo(character, char.currentTarget)
+                local isInMeleeRange = rangeToTarget <= 2.5 -- TODO: Replace this 19 with character's melee weapon range when it is gettable
+                local hasRangedWeapon = isTrue(Osi.HasRangedWeaponEquipped(character, "Mainhand"))
+                local hasMeleeWeapon = isTrue(Osi.HasMeleeWeaponEquipped(character, "Mainhand"))
+                if (rangeToTarget > 19) then -- TODO: Replace this 19 with character's ranged weapon range when it is gettable
+                    print("Casting failed 2")
+                    teleportBack(character)
                 else
-                    if (isInMeleeRange and hasMeleeWeapon) then
-                        makeDistantStrikeAttack("Melee", character, target)
+                    if (hasRangedWeapon) then
+                        if (isInMeleeRange and hasMeleeWeapon) then
+                            -- TODO: Make reaction here and ask user if they want to use ranged
+                            makeDistantStrikeAttack("Melee", character, char.currentTarget)
+                        else
+                            makeDistantStrikeAttack("Ranged", character, char.currentTarget)
+                        end
                     else
-                        TeleportBack(character)
+                        if (isInMeleeRange and hasMeleeWeapon) then
+                            makeDistantStrikeAttack("Melee", character, char.currentTarget)
+                        else
+                            print("Casting failed 3")
+                            teleportBack(character)
+                        end
                     end
                 end
+                Osi.RemoveStatus(char.currentTarget, "DISTANT_STRIKE_TARGET", char.currentTarget)
             end
-            Osi.RemoveStatus(target, "DISTANT_STRIKE_TARGET", target)
+
         end
-        char.currentTarget = nil
-        char.preCastX = nil
-        char.preCastY = nil
-        char.preCastZ = nil
+
+        refreshDistantStrike(character)
+
     end
 
-    refreshDistantStrike(character)
+end)
+
+Ext.Osiris.RegisterListener("TimerFinished", 1, "after", function (event)
+
+    for k, v in pairs(distantStrikers) do
+        local character = tostring(distantStrikers[k].charGUID)
+        if (character == event) then
+            local char = distantStrikers[k]
+            if (char.awaitingAttack) then
+                teleportBack(character)
+            end
+            Osi.RemoveStatus(character, "EXTRA_DISTANT_STRIKE_BLOCK_MOVEMENT", character)
+            char.awaitingAttack = false
+        end
+    end
 
 end)
 
 function makeDistantStrikeAttack(MeleeOrRanged, attacker, target)
 
+    local char = distantStrikerInfo(attacker)
     local isExtra = isTrue(Osi.HasAppliedStatus(attacker, "EXTRA_DISTANT_STRIKE_READY"))
 
     if isExtra then
         addStatus(attacker, "EXTRA_DISTANT_STRIKE_BLOCK_EXTRA_ATTACK", false)
-        local char = distantStrikerInfo(attacker)
         char.distantStrikeCharges = char.distantStrikeCharges - 1
     end
 
@@ -116,6 +162,11 @@ function makeDistantStrikeAttack(MeleeOrRanged, attacker, target)
     else
         error("Must be passed (melee/Melee/MELEE) or (ranged/Ranged/RANGED). Case sensitive.", 1)
     end
+
+    -- This is to prevent attacker from walking to make an attack.
+    addStatus(attacker, "EXTRA_DISTANT_STRIKE_BLOCK_MOVEMENT", false)
+    char.awaitingAttack = true
+    Osi.TimerLaunch(tostring(attacker), 5000)
 
     if isExtra then
         Osi.RemoveStatus(attacker, "BLOCK_EXTRA_ATTACK_EXTRA_DISTANT_STRIKE", attacker)
@@ -148,10 +199,34 @@ function refreshDistantStrike(character)
     end
 end
 
-function TeleportBack(character)
+function teleportBack(character)
+
     local char = distantStrikerInfo(character)
-    Osi.TeleportToPosition(character, char.preCastX, char.preCastY, char.preCastZ, "Out of attack range or invalid target.", 0, 0, 0, 0, 1)
-    -- TODO: Make this restore action cost or extra attack resource / whatever.
+    local postCastActionPoints = getActionPointCount(character)
+    local hasAnyExtraAttack = hasAnyExtraAttack(character)
+
+    if (postCastActionPoints ~= char.preCastActionPoints) then
+        Osi.AddActionPoints(character, char.preCastActionPoints - postCastActionPoints)
+    end
+
+    if (hasAnyExtraAttack ~= char.preCastExtraAttack) then
+        if char.preCastExtraAttack == true then
+            addStatus(character, "EXTRA_ATTACK", false)
+        else
+            Osi.RemoveStatus(character, "EXTRA_ATTACK", character) -- Theoretically this should basically never be called.
+        end
+    end
+
+    local x = char.preCastX
+    local y = char.preCastY
+    local z = char.preCastZ
+
+    Osi.TeleportToPosition(character, x, y, z, "Out of attack range or invalid target.", 0, 0, 0, 0, 1)
+
+    char.preCastX = nil
+    char.preCastY = nil
+    char.preCastZ = nil
+
 end
 
 extraAttackStatuses = {

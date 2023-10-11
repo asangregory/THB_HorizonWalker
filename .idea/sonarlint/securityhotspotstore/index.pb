@@ -43,7 +43,5 @@ d
 MMods/THB_HorizonWalker/ScriptExtender/Lua/THB_HorizonWalker_DistantStrike.lua,9\6\96fb4400fc224b33bd9464564dd1e5bc3345e92f
 m
 =Mods/THB_HorizonWalker/ScriptExtender/Lua/BootstrapClient.lua,0\7\07682f494b2a50b1289f4f6b3f7361708bc0f383
-]
--BG3_THB_HorizonWalker_Subclass/.gitattributes,a\d\ad4bc4f3a8e5966a510b28b6c52c3cbcefe457a0
 Å
 QMods/THB_HorizonWalker/ScriptExtender/Lua/THB_HorizonWalker_DistantStrike_OLD.lua,4\2\42fcd4e7d2d22419212d1a52eac0990d88be0627
