@@ -1,6 +1,6 @@
 Ext.Require("THB_HorizonWalker_General.lua")
 Ext.Require("THB_HorizonWalker_PlanarWarrior.lua")
-Ext.Require("THB_HorizonWalker_DistantStrike_OLD.lua")
+Ext.Require("THB_HorizonWalker_DistantStrike.lua")
 
 if Ext.Mod.IsModLoaded("67fbbd53-7c7d-4cfa-9409-6d737b4d92a9") then
   local subClasses = {
