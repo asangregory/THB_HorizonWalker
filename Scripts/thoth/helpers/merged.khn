@@ -1,5 +1,9 @@
 local __util = require 'larian.util'
 
 function ExtraAttackCheck()
-    return (HasStringInSpellRoll('WeaponAttack') | HasStringInSpellRoll('UnarmedAttack') | HasStringInSpellRoll('ThrowAttack') | SpellId('Target_CommandersStrike') | SpellId('Projectile_ArrowOfSmokepowder') | SpellId('Teleportation_DistantStrike')) & HasUseCosts('ActionPoint')
+    return (HasStringInSpellRoll('WeaponAttack') | HasStringInSpellRoll('UnarmedAttack') | HasStringInSpellRoll('ThrowAttack') | SpellId('Target_CommandersStrike') | SpellId('Projectile_ArrowOfSmokepowder') | SpellId('Teleportation_DistantStrikeRanged') | SpellId('Teleportation_DistantStrikeMelee')) & HasUseCosts('ActionPoint')
+end
+
+function DistantStrikeCheck()
+    return (SpellId('Teleportation_DistantStrikeRanged') | SpellId('Teleportation_DistantStrikeMelee')) & HasUseCosts('ActionPoint')
 end

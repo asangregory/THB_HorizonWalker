@@ -5,6 +5,8 @@ Whole readme.
 Fix 1d8/2d8 at 11th level for planar warriors mark
 <BR>
 Fix planar warrior how it is done to avoid merging vanilla.
+<BR>
+Reaction when distant striking in melee range, to ask if wanted to do a ranged attack instead of doing a melee attack
 
 BUGS:
 

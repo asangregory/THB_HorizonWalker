@@ -56,10 +56,8 @@ end)
 
 Ext.Osiris.RegisterListener("UsingSpell", 5, "before", function (character, spell, spellType, spellElement, storyActionID)
     if (isTrue(Osi.HasPassive(character, "DistantStrike") == 1)) then
-
         local char = distantStrikerInfo(character)
-
-        if (spell == "Teleportation_DistantStrike") then
+        if (spell == "Teleportation_DistantStrikeRanged" or spell == "Teleportation_DistantStrikeMelee") then
             -- Set the caster's pre cast positions in case of inability to execute / specified failure.
             local x, y, z = Osi.GetPosition(tostring(character))
             char.preCastX = x
@@ -69,126 +67,75 @@ Ext.Osiris.RegisterListener("UsingSpell", 5, "before", function (character, spel
             char.preCastExtraAttack = hasAnyExtraAttack(character)
             char.preCastDistantStrikeCharges = char.distantStrikeCharges
         end
-
-        -- To detect if an attack cast never happened within a distant strike cast.
-        if (char.awaitingAttack and spell == "Target_MainHandAttack" or spell == "Projectile_MainHandAttack") then
-
-        end
-
     end
 end)
 
 Ext.Osiris.RegisterListener("StatusApplied", 4, "after", function(target, status, caster, _)
-
     if (status == "DISTANT_STRIKE_TARGET") then
         -- attach the target to the source (distant striker)
         local char = distantStrikerInfo(caster)
         char.currentTarget = target
     end
-
-    if (isDistantStriker(caster)) then
-        refreshDistantStrike(caster)
-    end
-
 end)
 
-Ext.Osiris.RegisterListener("StatusRemoved", 4, "after", function (character, status, caster, _)
-
-    if (isDistantStriker(caster)) then
-        refreshDistantStrike(caster)
-    end
-
-end)
-
--- Handles the attacking
 Ext.Osiris.RegisterListener("CastedSpell", 5, "after", function(character, spell, spellType, spellElement, storyActionID)
-
     if (isDistantStriker(character)) then
-
         local char = distantStrikerInfo(character)
-
-        if (spell == "Teleportation_DistantStrike") then
-
-            if (char.currentTarget == nil
-                    or not isTrue(Osi.CanSee(character, char.currentTarget))
-                    or not isTrue(Osi.HasLineOfSight(character, char.currentTarget)))
-            then
-                print("Casting failed 1")
+        if (spell == "Teleportation_DistantStrikeRanged") then
+            if (char.currentTarget == nil) then
                 teleportBack(character)
             else
-                local rangeToTarget = Osi.GetDistanceTo(character, char.currentTarget)
-                local isInMeleeRange = rangeToTarget <= 2.5 -- TODO: Replace this 19 with character's melee weapon range when it is gettable
-                local hasRangedWeapon = isTrue(Osi.HasRangedWeaponEquipped(character, "Mainhand"))
-                local hasMeleeWeapon = isTrue(Osi.HasMeleeWeaponEquipped(character, "Mainhand"))
-                if (rangeToTarget > 19) then -- TODO: Replace this 19 with character's ranged weapon range when it is gettable
-                    print("Casting failed 2")
-                    teleportBack(character)
+                if (isTrue(Osi.HasRangedWeaponEquipped(character, "Mainhand"))) then
+                    makeDistantStrikeAttack("Ranged", character, char.currentTarget)
                 else
-                    if (hasRangedWeapon) then
-                        if (isInMeleeRange and hasMeleeWeapon) then
-                            -- TODO: Make reaction here and ask user if they want to use ranged
-                            makeDistantStrikeAttack("Melee", character, char.currentTarget)
-                        else
-                            makeDistantStrikeAttack("Ranged", character, char.currentTarget)
-                        end
-                    else
-                        if (isInMeleeRange and hasMeleeWeapon) then
-                            makeDistantStrikeAttack("Melee", character, char.currentTarget)
-                        else
-                            print("Casting failed 3")
-                            teleportBack(character)
-                        end
-                    end
+                    teleportBack(character)
                 end
                 Osi.RemoveStatus(char.currentTarget, "DISTANT_STRIKE_TARGET", char.currentTarget)
             end
-
+        elseif (spell == "Teleportation_DistantStrikeMelee") then
+            if (char.currentTarget == nil) then
+                teleportBack(character)
+            else
+                if (isTrue(Osi.HasMeleeWeaponEquipped(character, "Mainhand"))) then
+                    makeDistantStrikeAttack("Melee", character, char.currentTarget)
+                else
+                    teleportBack(character)
+                end
+                Osi.RemoveStatus(char.currentTarget, "DISTANT_STRIKE_TARGET", char.currentTarget)
+            end
         elseif (char.awaitingAttack and spell == "Target_MainHandAttack" or spell == "Projectile_MainHandAttack") then
-
-            print("Awaiting attack")
-
             Osi.TimerCancel(tostring(character))
             char.awaitingAttack = false
             char.currentTarget = nil
-            Osi.RemoveStatus(character, "EXTRA_DISTANT_STRIKE_BLOCK_MOVEMENT", character)
-            Osi.RemoveStatus(character, "EXTRA_DISTANT_STRIKE_READY", character)
-            Osi.RemoveStatus(character, "EXTRA_DISTANT_STRIKE_BLOCK_EXTRA_ATTACK", character)
-
+            Osi.RemoveStatus(character, "MOVEMENT_BLOCK", character)
+            Osi.RemoveStatus(character, "DISTANT_STRIKE_EXTRA", character)
+            Osi.RemoveStatus(character, "EXTRA_ATTACK_BLOCK", character)
         end
-
-        print("Refreshing for spell: " .. spell)
         refreshDistantStrike(character)
-
     end
-
 end)
 
 Ext.Osiris.RegisterListener("TimerFinished", 1, "after", function (event)
-
     for k, v in pairs(distantStrikers) do
         local character = tostring(distantStrikers[k].charGUID)
         if (character == event) then
             local char = distantStrikers[k]
             teleportBack(character)
-            Osi.RemoveStatus(character, "EXTRA_DISTANT_STRIKE_BLOCK_MOVEMENT", character)
-            Osi.RemoveStatus(character, "EXTRA_DISTANT_STRIKE_READY", character)
-            Osi.RemoveStatus(character, "EXTRA_DISTANT_STRIKE_BLOCK_EXTRA_ATTACK", character)
+            Osi.RemoveStatus(character, "MOVEMENT_BLOCK", character)
+            Osi.RemoveStatus(character, "DISTANT_STRIKE_EXTRA", character)
+            Osi.RemoveStatus(character, "EXTRA_ATTACK_BLOCK", character)
             char.awaitingAttack = false
         end
     end
-
 end)
 
 function makeDistantStrikeAttack(MeleeOrRanged, attacker, target)
-
     local char = distantStrikerInfo(attacker)
-    local isExtra = isTrue(Osi.HasAppliedStatus(attacker, "EXTRA_DISTANT_STRIKE_READY"))
-
+    local isExtra = isTrue(Osi.HasAppliedStatus(attacker, "DISTANT_STRIKE_EXTRA"))
     if isExtra then
-        addStatus(attacker, "EXTRA_DISTANT_STRIKE_BLOCK_EXTRA_ATTACK")
+        addStatus(attacker, "EXTRA_ATTACK_BLOCK")
         char.distantStrikeCharges = char.distantStrikeCharges - 1
     end
-
     if MeleeOrRanged == "Melee" or MeleeOrRanged == "melee" or MeleeOrRanged == "MELEE" then
         Osi.UseSpell(attacker, "Target_MainHandAttack", target)
         if not isExtra then addDistantStrikeTarget(attacker, target) end
@@ -198,53 +145,39 @@ function makeDistantStrikeAttack(MeleeOrRanged, attacker, target)
     else
         error("Must be passed (melee/Melee/MELEE) or (ranged/Ranged/RANGED). Case sensitive.", 1)
     end
-
     -- This is to prevent attacker from walking to make an attack.
-    addStatus(attacker, "EXTRA_DISTANT_STRIKE_BLOCK_MOVEMENT")
+    addStatus(attacker, "MOVEMENT_BLOCK")
     char.awaitingAttack = true
     Osi.TimerLaunch(tostring(attacker), 8000)
-
 end
 
 function addDistantStrikeTarget(attacker, target)
-
     local char = distantStrikerInfo(attacker)
-
     if (char.targetList[tostring(target)] ~= true) then
         char.targetList[tostring(target)] = true -- Add target to attacker's attacked targets
         char.targetCount = char.targetCount + 1
     end
-
     if (char.targetCount == 2 or char.targetCount == 4 or char.targetCount == 6) then
         char.distantStrikeCharges = char.distantStrikeCharges + 1
     end
-
 end
 
 function refreshDistantStrike(character)
-    print("Refreshing")
     local char = distantStrikerInfo(character)
-    print("Charges: " .. char.distantStrikeCharges)
-    print("Can Attack: ", canAttack(character))
     if (char.distantStrikeCharges > 0 and not canAttack(character)) then
-        print("Adding Status")
-        addStatus(character, "EXTRA_DISTANT_STRIKE_READY")
+        addStatus(character, "DISTANT_STRIKE_EXTRA")
     else
-        print("Removing Status")
-        Osi.RemoveStatus(character, "EXTRA_DISTANT_STRIKE_READY", character)
+        Osi.RemoveStatus(character, "DISTANT_STRIKE_EXTRA", character)
     end
 end
 
 function teleportBack(character)
-
     local char = distantStrikerInfo(character)
     local postCastActionPoints = getActionPointCount(character)
     local hasAnyExtraAttack = hasAnyExtraAttack(character)
-
     if (postCastActionPoints ~= char.preCastActionPoints) then
         Osi.AddActionPoints(character, char.preCastActionPoints - postCastActionPoints)
     end
-
     if (hasAnyExtraAttack ~= char.preCastExtraAttack) then
         if char.preCastExtraAttack == true then
             addStatus(character, "EXTRA_ATTACK")
@@ -252,21 +185,16 @@ function teleportBack(character)
             Osi.RemoveStatus(character, "EXTRA_ATTACK", character) -- Theoretically this should basically never be called.
         end
     end
-
     if (char.distantStrikeCharges ~= char.preCastDistantStrikeCharges) then
         char.distantStrikeCharges = char.preCastDistantStrikeCharges
     end
-
     local x = char.preCastX
     local y = char.preCastY
     local z = char.preCastZ
-
     Osi.TeleportToPosition(character, x, y, z, "Out of attack range or invalid target.", 0, 0, 0, 0, 1)
-
     char.preCastX = nil
     char.preCastY = nil
     char.preCastZ = nil
-
 end
 
 extraAttackStatuses = {
@@ -306,11 +234,9 @@ function addStatus(target, status, allowStacking, duration, force, source)
     force = force or 1
     source = source or target
     if (allowStacking) then
-        print("Applying Status 1")
         Osi.ApplyStatus(target, status, duration, force, source)
     else
         if (not isTrue(Osi.HasAppliedStatus(target, tostring(status)))) then
-            print("Applying Status 2")
             Osi.ApplyStatus(target, status, duration, force, source)
         end
     end

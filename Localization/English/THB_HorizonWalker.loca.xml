@@ -13,13 +13,38 @@
   <content contentuid="h93bdfeefg16d4g42bdg9068ge6b285016fe7" version="1">You step into the border regions of the Ethereal Plane until the end of the current turn. You are invisible to creatures on the Material Plane unless a special ability or magic has given them the ability to see you. You ignore objects and effects originating from the Material Plane.</content>
   <content contentuid="h5cf0e9acg4d18g4df7g9a34g14ec070fecba" version="1">Return To Material Plane</content>
   <content contentuid="h13552184gdf06g4ba7ga315g1b30451fd358" version="1">Leave the Ethereal Plane and return to the Material Plane.</content>
-  <content contentuid="hf44f4d0dg3348g4ffbgb72fgd631485ea704" version="1">Distant Strike</content>
-  <content contentuid="h0aefa38eg7a29g4766g8a53g19480943f428" version="1">Distant Strike (Extra)</content>
+  <content contentuid="h31dc23eega76eg4ee5g9002g5299249012b8" version="1">Distant Strike</content>
   <content contentuid="h826f993fge2c2g4b77gaf15gfab50a2408e4" version="1">You have the ability to pass between the planes in a blink of an eye. You gain an ability, allowing you to teleport up to 10 feet to an unoccupied space you can see before an attack. If you attack at least two different creatures with the action, you can make one additional attack with it against a third creature.</content>
-  <content contentuid="hebdbce6dgccadg4abag9a72g9959cf369c51" version="1">Teleport up to 10 feet away before then making a weapon attack against the targeted creature.</content>
+  <content contentuid="hf44f4d0dg3348g4ffbgb72fgd631485ea704" version="1">Distant Strike (Ranged)</content>
+  <content contentuid="hebdbce6dgccadg4abag9a72g9959cf369c51" version="1">Teleport up to 10 feet away before then making a ranged attack against the targeted creature.</content>
+  <content contentuid="h0aefa38eg7a29g4766g8a53g19480943f428" version="1">Distant Strike (Melee)</content>
+  <content contentuid="hf60a303fgf58cg497bg8d52gc83c8273a632" version="1">Teleport up to 10 feet away before then making a melee attack against the targeted creature.</content>
   <content contentuid="hce1e526ag748ag40f9gab4fg4594b493d31c" version="1">Distant Strike Target</content>
   <content contentuid="he1d9e0bcg96f7g4246gbc04g6f9b078c7790" version="1">The target of a Distant Strike attack.</content>
-  <content contentuid="h6aee6457g35f7g49b2g9841g9acbc6360c3d" version="1">Has Distant Struck Two Targets</content>
-  <content contentuid="h31dc23eega76eg4ee5g9002g5299249012b8" version="1">USEME</content>
-  <content contentuid="h4f746ccbg3debg4575gb10ag4ea721db4ead" version="1">USEME</content>
+  <content contentuid="h6aee6457g35f7g49b2g9841g9acbc6360c3d" version="1">Distant Strike Extra Attack</content>
+  <content contentuid="h4f746ccbg3debg4575gb10ag4ea721db4ead" version="1">Extra Attack Blocked</content>
+  <content contentuid="h537acba2g4822g43d6gab5cg7242055cf48d" version="1">Movement Blocked</content>
+  <content contentuid="" version="1">_</content>
+  <content contentuid="" version="1">_</content>
+  <content contentuid="" version="1">_</content>
+  <content contentuid="" version="1">_</content>
+  <content contentuid="" version="1">_</content>
+  <content contentuid="" version="1">_</content>
+  <content contentuid="" version="1">_</content>
+  <content contentuid="" version="1">_</content>
+  <content contentuid="" version="1">_</content>
+  <content contentuid="" version="1">_</content>
+  <content contentuid="" version="1">_</content>
+  <content contentuid="" version="1">_</content>
+  <content contentuid="" version="1">_</content>
+  <content contentuid="" version="1">_</content>
+  <content contentuid="" version="1">_</content>
+  <content contentuid="" version="1">_</content>
+  <content contentuid="" version="1">_</content>
+  <content contentuid="" version="1">_</content>
+  <content contentuid="" version="1">_</content>
+  <content contentuid="" version="1">_</content>
+  <content contentuid="" version="1">_</content>
+  <content contentuid="" version="1">_</content>
+  <content contentuid="" version="1">_</content>
 </contentList>
