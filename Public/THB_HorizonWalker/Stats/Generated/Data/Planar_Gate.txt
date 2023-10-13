@@ -1,8 +1,0 @@
-new entry "Teleportation_PlanarGate"
-type "SpellData"
-data "SpellType" "Teleportation"
-using "Teleportation_ArcaneGate"
-data "DisplayName" "hd745986cg8f8dg4a8bgaef5ge595ccb47124;1"
-data "Description" "h30ff5214g89b4g4c6bg938egfd652c031a6f;1"
-data "Cooldown" "OncePerShortRest"
-data "UseCosts" "ActionPoint:1"

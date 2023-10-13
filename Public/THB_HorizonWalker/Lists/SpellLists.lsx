@@ -6,7 +6,7 @@
 			<children>
 				<node id="SpellList">
 					<attribute id="Comment" type="LSString" value="Horizon Walker Lvl 3"/>
-					<attribute id="Spells" type="LSString" value="Target_ProtectionFromEvilAndGood;Target_PlanarWarriorsMark;Teleportation_PlanarGate;Shout_EtherealStep;"/>
+					<attribute id="Spells" type="LSString" value="Target_ProtectionFromEvilAndGood;Target_PlanarWarriorsMark;Projectile_PlanarBlast;Shout_EtherealStep;"/>
 					<attribute id="UUID" type="guid" value="196e8941-d599-4e52-8740-d5ffbe4485fb"/>
 				</node>
 				<node id="SpellList">

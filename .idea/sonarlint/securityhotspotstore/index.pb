@@ -47,3 +47,15 @@ b
 2Mods/THB_HorizonWalker/ScriptExtender/Lua/Char.txt,a\7\a7248ff18f2ad87ada8bfaf82a56a8b15b70874f
 m
 =Mods/THB_HorizonWalker/ScriptExtender/Lua/DealDamageEvent.txt,6\d\6df8cb44022b773d9af99244b3e0641e0f2611f8
+c
+3Mods/THB_HorizonWalker/ScriptExtender/Lua/Char.json,5\2\5268a607f2d3beedb503c0813d70e243f42f1e75
+n
+>Mods/THB_HorizonWalker/ScriptExtender/Lua/DealDamageEvent.json,5\f\5fb0a64679fbf3986db266fbf278b883377055d8
+g
+7Mods/THB_HorizonWalker/ScriptExtender/Lua/Shortbow.json,3\0\30fd145e61e3ca6cfbfa66a9756fb9d9e2d59656
+`
+0Public/THB_HorizonWalker/Shapeshift/Rulebook.lsx,3\6\3613c119ecf377dc4afb6ede197014f21e151140
+a
+1Public/THB_HorizonWalker/RootTemplates/merged.lsx,f\e\fee290200c6e68a9e7cb2cdb76e9548ed31bf3b8
+n
+>Public/THB_HorizonWalker/Stats/Generated/Data/Planar_Blast.txt,5\6\563953ed495cf98acd52078ee4943cf084141109
