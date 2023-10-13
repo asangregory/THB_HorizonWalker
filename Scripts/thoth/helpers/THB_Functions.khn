@@ -1,19 +1,5 @@
 local __util = require 'larian.util'
 
-function HasAnyAttack (entity)
-    local entity = entity or context.Target
-    return CanAttack(entity) | HasAnyExtraAttack(entity)
-end
-
-function HasAnyAttackAndIsInCombat (entity)
-    local entity = entity or context.Target
-    local isInCombat = Combat(entity)
-    return HasAnyAttack(entity) & isInCombat
-end
-
-function CanDistantStrikeStep(entity)
-    local entity = entity or context.Target
-    local canAttackInCombat = HasAnyAttackAndIsInCombat(entity)
-    local awaitingAttack = HasStatus('DISTANT_STRIKE_AWAITING_ATTACK', context.Source)
-    return canAttackInCombat & not awaitingAttack.Result
+function DistantStrikeCheck()
+    return (SpellId('Teleportation_DistantStrikeRanged') | SpellId('Teleportation_DistantStrikeMelee')) & HasUseCosts('ActionPoint')
 end

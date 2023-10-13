@@ -1,0 +1,197 @@
+S >> Ext.Events.DealDamage:Subscribe(function(e) _D(e) end)
+S >> {
+        "ActionPrevented" : false,
+        "CanPreventAction" : false,
+        "Caster" : "Entity (0200000400006f19)",
+        "DamageSums" :
+        {
+                "DamagePercentage" : 100,
+                "TotalDamageDone" : 0,
+                "TotalHealDone" : 0,
+                "field_9" : 0,
+                "field_A" : 0
+        },
+        "Functor" :
+        {
+                "DamageType" : "None",
+                "Magical" : false,
+                "Nonlethal" : false,
+                "ObserverType" : "None",
+                "RollConditions" : {},
+                "StatsConditionsId" : 17,
+                "TypeId" : "RemoveStatus",
+                "UniqueName" : "DealDamageTARGETAOE_IF(not HasStatus('PLANAR_WARRIORS_MARK',context.Target,context.Source))_
+",
+                "WeaponDamageType" : "MainRangedWeaponDamageType",
+                "WeaponType" : "MainRangedWeapon",
+                "field_34" : 0
+        },
+        "Hit" :
+        {
+                "ArmorAbsorption" : 0,
+                "AttackRollAbility" : "Dexterity",
+                "CauseType" : "Attack",
+                "ConditionRolls" :
+                {
+                        "1" :
+                        {
+                                "Ability" : "None",
+                                "DataType" : 0,
+                                "Difficulty" : 7,
+                                "Roll" :
+                                {
+                                        "Metadata" :
+                                        {
+                                                "AbilityBoosts" :
+                                                {
+                                                        "Dexterity" : 2
+                                                },
+                                                "AutoAbilityCheckFail" : false,
+                                                "AutoAbilitySavingThrowFail" : false,
+                                                "AutoSkillCheckFail" : false,
+                                                "HasCustomMetadata" : false,
+                                                "IsCritical" : false,
+                                                "ProficiencyBonus" : 2,
+                                                "ResolvedRollBonuses" : {},
+                                                "ResolvedUnknowns" : {},
+                                                "RollBonus" : 2,
+                                                "SkillBonuses" : {},
+                                                "field_10" : 0,
+                                                "field_14" : 1072693248,
+                                                "field_8" : 0
+                                        },
+                                        "Result" :
+                                        {
+                                                "Critical" : false,
+                                                "DiceSize" : 20,
+                                                "DiceTotal" : 11,
+                                                "DiscardedDiceTotal" : 12,
+                                                "Total" : 15,
+                                                "field_14" : 1,
+                                                "field_18" : {}
+                                        },
+                                        "Roll" :
+                                        {
+                                                "Advantage" : false,
+                                                "Disadvantage" : false,
+                                                "Roll" :
+                                                {
+                                                        "AmountOfDices" : 1,
+                                                        "DiceAdditionalValue" : 4,
+                                                        "DiceValue" : "D20",
+                                                        "field_8" : 0
+                                                },
+                                                "RollType" : "RangedWeaponAttack",
+                                                "field_10" : {}
+                                        }
+                                },
+                                "RollType" :
+                                [
+                                        "AttackRoll"
+                                ],
+                                "Skill" : "Sentinel",
+                                "field_120" : "9044df95-df48-aa9a-b328-7c391381efbd",
+                                "field_130" : false
+                        }
+                },
+                "DamageList" : {},
+                "DamageType" : "None",
+                "DeathType" : "None",
+                "EffectFlags" : 513,
+                "HitDescFlags" : 1,
+                "HitWith" : "Weapon",
+                "ImpactDirection" :
+                [
+                        -0.97532391548156738,
+                        -0.16681411862373352,
+                        0.14462457597255707
+                ],
+                "ImpactForce" : 0.0,
+                "ImpactPosition" :
+                [
+                        -54.04443359375,
+                        4.4990696907043457,
+                        -396.99380493164062
+                ],
+                "Inflicter" : "Entity (0200000400006f19)",
+                "InflicterOwner" : "Entity (0200000400006f19)",
+                "LifeSteal" : 0,
+                "Results" :
+                {
+                        "AdditionalDamage" : 0,
+                        "ConditionRoll" :
+                        {
+                                "DamageTypeIndex" : 0,
+                                "DamageTypeParams" : {},
+                                "IntIndex" : 0,
+                                "IntParams" : {},
+                                "RollIndex" : 0,
+                                "RollParams" : {},
+                                "StatExpression" : ""
+                        },
+                        "DamageRolls" : {},
+                        "FinalDamage" : 0,
+                        "FinalDamagePerType" : {},
+                        "Modifiers" : {},
+                        "Modifiers2" : {},
+                        "Resistances" : {},
+                        "TotalDamage" : 0,
+                        "TotalDamagePerType" : {}
+                },
+                "SaveAbility" : "None",
+                "SpellAttackType" : "RangedWeaponAttack",
+                "SpellId" : "Projectile_MainHandAttack",
+                "SpellLevel" : 0,
+                "SpellPowerLevel" : 0,
+                "SpellSchool" : "None",
+                "StoryActionId" : 28,
+                "Throwing" : null,
+                "TotalDamageDone" : 0,
+                "TotalHealDone" : 0,
+                "field_140" : "98e17e29-6667-c4fd-2a5c-6a8bda961359",
+                "field_150" : "",
+                "field_158" : null,
+                "field_160" : 0,
+                "field_171" : 18,
+                "field_174" : 0,
+                "field_178" : 0,
+                "field_17C" : 0,
+                "field_180" : 0,
+                "field_184" : 0,
+                "field_188" : 0.0,
+                "field_18C" : 0,
+                "field_190" : {}
+        },
+        "HitWith" : "Magic",
+        "IsFromItem" : false,
+        "Name" : "DealDamage",
+        "Originator" :
+        {
+                "ActionGuid" : "00000000-0000-0000-0000-000000000000",
+                "CanApplyConcentration" : true,
+                "InterruptId" : "",
+                "PassiveId" : "",
+                "StatusId" : ""
+        },
+        "Position" :
+        [
+                -54.04443359375,
+                4.4990696907043457,
+                -396.99380493164062
+        ],
+        "PreventAction" : "function: 00007FF8D9AC5E20",
+        "SpellId" :
+        {
+                "OriginatorPrototype" : "Projectile_MainHandAttack",
+                "ProgressionSource" : "00000000-0000-0000-0000-000000000000",
+                "Prototype" : "Projectile_MainHandAttack",
+                "SourceType" : "WeaponAttack",
+                "SpellProto" : {},
+                "field_30" : "98e17e29-6667-c4fd-2a5c-6a8bda961359",
+                "field_40" : 1
+        },
+        "StopPropagation" : "function: 00007FF8D9AC5DF0",
+        "Stopped" : false,
+        "StoryActionId" : 28,
+        "Target" : "Entity (0200000400005624)"
+}

@@ -1,0 +1,695 @@
+Shortbow Table
+{
+        "AttributeFlags" :
+        {
+                "AttributeFlags" : 0
+        },
+        "BoostsContainer" :
+        {
+                "Boosts" : {},
+                "field_0" : 144115192370843889
+        },
+        "CanBeDisarmed" :
+        {
+                "Flags" : 65535
+        },
+        "CombatParticipant" :
+        {
+                "AiHint" : "00000000-0000-0000-0000-000000000000",
+                "CombatGroupId" : "",
+                "CombatHandle" : null,
+                "Flags" :
+                [
+                        "IsInspector",
+                        "CanJoinCombat"
+                ],
+                "field_C" : -100
+        },
+        "Data" :
+        {
+                "StatsId" : "WPN_Shortbow",
+                "StepsType" : 0,
+                "Weight" : 900
+        },
+        "DisplayName" :
+        {
+                "Name" : "",
+                "NameKey" :
+                {
+                        "ArgumentString" :
+                        {
+                                "Handle" : "ls::TranslatedStringRepository::s_HandleUnknown",
+                                "Version" : 0
+                        },
+                        "Handle" :
+                        {
+                                "Handle" : "h37c15e75ge5b3g449ag8cb5g8c307fb00a6b",
+                                "Version" : 1
+                        }
+                },
+                "UnknownKey" :
+                {
+                        "ArgumentString" :
+                        {
+                                "Handle" : "ls::TranslatedStringRepository::s_HandleUnknown",
+                                "Version" : 0
+                        },
+                        "Handle" :
+                        {
+                                "Handle" : "ls::TranslatedStringRepository::s_HandleUnknown",
+                                "Version" : 0
+                        }
+                }
+        },
+        "Equipable" :
+        {
+                "Slot" : "RangedMainHand",
+                "field_18" : "520bf44f-b723-4e61-8d59-19ba47a7c1ca"
+        },
+        "FTBParticipant" :
+        {
+                "field_18" : "Entity (00000230066a9800)"
+        },
+        "GameObjectVisual" :
+        {
+                "Icon" : "Item_WPN_HUM_Shortbow_A_0",
+                "RootTemplateId" : "c5403c1d-f372-43e1-927a-9189e9e3545d",
+                "RootTemplateType" : 0,
+                "VisualData" :
+                {
+                        "Elements" : {},
+                        "Visuals" : {},
+                        "field_58" : "00000000-0000-0000-0000-000000000000",
+                        "field_68" : "00000000-0000-0000-0000-000000000000",
+                        "field_78" : "00000000-0000-0000-0000-000000000000",
+                        "field_88" : "00000000-0000-0000-0000-000000000000",
+                        "field_98" : "00000000-0000-0000-0000-000000000000",
+                        "field_C8" : {}
+                },
+                "field_24" : 1.0,
+                "field_28" : 0,
+                "field_F0" : ""
+        },
+        "Icon" :
+        {
+                "Icon" : "Item_WPN_HUM_Shortbow_A_0"
+        },
+        "InventoryMember" :
+        {
+                "EquipmentSlot" : 5,
+                "Inventory" : "Entity (02000001000056ee)"
+        },
+        "IsGlobal" : {},
+        "ItemBoosts" :
+        {
+                "Boosts" :
+                {
+                        "1" : "Entity (0200000100005eec)"
+                }
+        },
+        "Net" : {},
+        "ObjectSize" :
+        {
+                "Size" : 0,
+                "field_1" : 0
+        },
+        "PassiveContainer" :
+        {
+                "Passives" : {}
+        },
+        "Physics" : {},
+        "Savegame" : {},
+        "ServerAnubisTag" :
+        {
+                "Tags" : {}
+        },
+        "ServerBoostTag" :
+        {
+                "Tags" : {}
+        },
+        "ServerDialogTag" :
+        {
+                "Tags" : {}
+        },
+        "ServerDisplayNameList" :
+        {
+                "Names" :
+                {
+                        "1" :
+                        {
+                                "Name" : "",
+                                "NameKey" :
+                                {
+                                        "ArgumentString" :
+                                        {
+                                                "Handle" : "ls::TranslatedStringRepository::s_HandleUnknown",
+                                                "Version" : 0
+                                        },
+                                        "Handle" :
+                                        {
+                                                "Handle" : "ResStr_3204391132",
+                                                "Version" : 0
+                                        }
+                                },
+                                "field_10" : 8
+                        },
+                        "2" :
+                        {
+                                "Name" : "",
+                                "NameKey" :
+                                {
+                                        "ArgumentString" :
+                                        {
+                                                "Handle" : "ls::TranslatedStringRepository::s_HandleUnknown",
+                                                "Version" : 0
+                                        },
+                                        "Handle" :
+                                        {
+                                                "Handle" : "h37c15e75ge5b3g449ag8cb5g8c307fb00a6b",
+                                                "Version" : 1
+                                        }
+                                },
+                                "field_10" : 6
+                        }
+                },
+                "TranslatedStrings" : {}
+        },
+        "ServerIconList" :
+        {
+                "Icons" :
+                {
+                        "1" :
+                        {
+                                "Icon" : "Item_WPN_HUM_Shortbow_A_0",
+                                "field_4" : 1048576004
+                        }
+                },
+                "field_30" : 0
+        },
+        "ServerItem" :
+        {
+                "Item" :
+                {
+                        "Activated" : false,
+                        "CanBeMoved" : true,
+                        "CanBePickedUp" : true,
+                        "CanOnlyBeUsedByOwner" : false,
+                        "CanShootThrough" : false,
+                        "CanUse" : false,
+                        "ClientSync1" : false,
+                        "Destroy" : false,
+                        "Destroyed" : false,
+                        "DisableInventoryView80" : false,
+                        "DisableSync" : false,
+                        "DisableUse" : 0,
+                        "DontAddToHotbar" : false,
+                        "Flags" :
+                        [
+                                "CanBeMoved",
+                                "CanBePickedUp",
+                                "Known"
+                        ],
+                        "Flags2" :
+                        [
+                                "Global"
+                        ],
+                        "Floating" : false,
+                        "ForceClientSync" : false,
+                        "ForceSync" : false,
+                        "ForceSynch" : 0,
+                        "FreezeGravity" : false,
+                        "Frozen" : false,
+                        "GMFolding" : false,
+                        "Global" : true,
+                        "HideHP" : false,
+                        "InAutomatedDialog" : false,
+                        "InPartyInventory" : false,
+                        "InUse" : false,
+                        "InheritedForceSynch" : 0,
+                        "InteractionDisabled" : false,
+                        "Invisible" : false,
+                        "Invisible2" : false,
+                        "Invulnerable" : false,
+                        "Invulnerable2" : false,
+                        "IsContainer" : false,
+                        "IsDoor" : false,
+                        "IsLadder" : false,
+                        "IsMoving" : false,
+                        "IsSecretDoor" : false,
+                        "IsSurfaceBlocker" : false,
+                        "IsSurfaceCloudBlocker" : false,
+                        "ItemType" : "Common",
+                        "Known" : true,
+                        "Level" : "",
+                        "LevelTransitionPending" : false,
+                        "LoadedTemplate" : false,
+                        "LuckyFind" : false,
+                        "MovingCount" : 0,
+                        "MyHandle" : "Entity (02000001000050f1)",
+                        "NoCover" : false,
+                        "OffStage" : false,
+                        "OriginalTemplate" : "*RECURSION*",
+                        "PinnedContainer" : false,
+                        "PositionChanged" : false,
+                        "PreviousLevel" : "",
+                        "ReservedForDialog" : false,
+                        "SourceContainer" : false,
+                        "Stats" : "WPN_Shortbow",
+                        "StatusManager" :
+                        {
+                                "Statuses" : {}
+                        },
+                        "Sticky" : false,
+                        "StoryItem" : false,
+                        "Summon" : false,
+                        "TeleportOnUse" : false,
+                        "Template" :
+                        {
+                                "ActivationGroupId" : "",
+                                "AllowCameraMovement" : false,
+                                "AllowReceiveDecalWhenAnimated" : false,
+                                "AllowSummonTeleport" : false,
+                                "Amount" : 1,
+                                "AnubisConfigName" : "",
+                                "AttackableWhenClickThrough" : false,
+                                "BlockAoEDamage" : false,
+                                "BloodSurfaceType" : 0,
+                                "BloodType" : "",
+                                "BookType" : 0,
+                                "CameraOffset" :
+                                [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                ],
+                                "CanBeImprovisedWeapon" : false,
+                                "CanBeMoved" : true,
+                                "CanBePickedUp" : true,
+                                "CanBePickpocketed" : true,
+                                "CanClickThrough" : false,
+                                "CanClimbOn" : false,
+                                "CanShineThrough" : false,
+                                "CanShootThrough" : true,
+                                "CastShadow" : true,
+                                "CinematicArenaFlags" : 0,
+                                "CollideWithCamera" : false,
+                                "ColorPreset" : "00000000-0000-0000-0000-000000000000",
+                                "ConstellationConfigName" : "",
+                                "ContainerAutoAddOnPickup" : false,
+                                "ContainerContentFilterCondition" : "",
+                                "CoverAmount" : false,
+                                "CriticalHitType" : "",
+                                "DefaultState" : "",
+                                "Description" :
+                                {
+                                        "ArgumentString" :
+                                        {
+                                                "Handle" : "ls::TranslatedStringRepository::s_HandleUnknown",
+                                                "Version" : 0
+                                        },
+                                        "Handle" :
+                                        {
+                                                "Handle" : "h6e6de56cg3553g4832gae52g0bcfa3a1ffb6",
+                                                "Version" : 1
+                                        }
+                                },
+                                "DestroyWithStack" : false,
+                                "Destroyed" : false,
+                                "DisarmDifficultyClassID" : "00000000-0000-0000-0000-000000000000",
+                                "DisplayName" :
+                                {
+                                        "ArgumentString" :
+                                        {
+                                                "Handle" : "ls::TranslatedStringRepository::s_HandleUnknown",
+                                                "Version" : 0
+                                        },
+                                        "Handle" :
+                                        {
+                                                "Handle" : "h37c15e75ge5b3g449ag8cb5g8c307fb00a6b",
+                                                "Version" : 1
+                                        }
+                                },
+                                "DisplayNameAlchemy" :
+                                {
+                                        "ArgumentString" :
+                                        {
+                                                "Handle" : "ls::TranslatedStringRepository::s_HandleUnknown",
+                                                "Version" : 0
+                                        },
+                                        "Handle" :
+                                        {
+                                                "Handle" : "ls::TranslatedStringRepository::s_HandleUnknown",
+                                                "Version" : 0
+                                        }
+                                },
+                                "DropSound" : "f55dc72a-13b8-6e3d-7500-559a5d1f3031",
+                                "EquipSound" : "da469251-95cf-5387-6295-5b1d5ce5a41f",
+                                "EquipmentTypeID" : "520bf44f-b723-4e61-8d59-19ba47a7c1ca",
+                                "ExamineRotation" :
+                                [
+                                        0.0,
+                                        25.0,
+                                        0.0
+                                ],
+                                "ExcludeInDifficulty" : {},
+                                "FadeChildren" : {},
+                                "FadeGroup" : "",
+                                "Fadeable" : true,
+                                "FileName" : "C:/Program Files (x86)/Steam/steamapps/common/Baldurs Gate 3/Data/Public/Shared
+/RootTemplates/_merged.lsf",
+                                "Flags" : 0,
+                                "ForceAffectedByAura" : false,
+                                "GravityType" : 0,
+                                "GroupID" : 0,
+                                "HLOD" : "00000000-0000-0000-0000-000000000000",
+                                "HasGameplayValue" : false,
+                                "HasParentModRelation" : false,
+                                "HierarchyOnlyFade" : true,
+                                "Hostile" : false,
+                                "Icon" : "Item_WPN_HUM_Shortbow_A_0",
+                                "Id" : "c5403c1d-f372-43e1-927a-9189e9e3545d",
+                                "IgnoreGenerics" : false,
+                                "ImpactSound" : "f55dc72a-13b8-6e3d-7500-559a5d1f3031",
+                                "InteractionFilterList" : {},
+                                "InteractionFilterRequirement" : 0,
+                                "InteractionFilterType" : 0,
+                                "InventoryList" :
+                                {
+                                        "1" : "Empty"
+                                },
+                                "InventoryMoveSound" : "f55dc72a-13b8-6e3d-7500-559a5d1f3031",
+                                "InventoryType" : 0,
+                                "IsBlocker" : false,
+                                "IsBlueprintDisabledByDefault" : true,
+                                "IsDecorative" : false,
+                                "IsDeleted" : false,
+                                "IsDroppedOnDeath" : true,
+                                "IsGlobal" : false,
+                                "IsInteractionDisabled" : false,
+                                "IsKey" : false,
+                                "IsPlatformOwner" : false,
+                                "IsPointerBlocker" : false,
+                                "IsPortal" : false,
+                                "IsPortalProhibitedToPlayers" : false,
+                                "IsPublicDomain" : false,
+                                "IsReflecting" : false,
+                                "IsShadowProxy" : false,
+                                "IsSourceContainer" : false,
+                                "IsSurfaceBlocker" : false,
+                                "IsSurfaceCloudBlocker" : false,
+                                "IsTradable" : 0,
+                                "IsTrap" : false,
+                                "Key" : "",
+                                "LevelName" : "",
+                                "LightChannel" : 0,
+                                "LockDifficultyClassID" : "00000000-0000-0000-0000-000000000000",
+                                "LoopSound" : "",
+                                "MaterialPreset" : "00000000-0000-0000-0000-000000000000",
+                                "MaxStackAmount" : 1,
+                                "Name" : "WPN_HUM_Shortbow_A_0",
+                                "OnUseDescription" :
+                                {
+                                        "ArgumentString" :
+                                        {
+                                                "Handle" : "ls::TranslatedStringRepository::s_HandleUnknown",
+                                                "Version" : 0
+                                        },
+                                        "Handle" :
+                                        {
+                                                "Handle" : "ls::TranslatedStringRepository::s_HandleUnknown",
+                                                "Version" : 0
+                                        }
+                                },
+                                "OnlyInDifficulty" : {},
+                                "Owner" : "",
+                                "ParentTemplateId" : "74c41595-b1df-45e4-bb3f-a93b9d7f421c",
+                                "PermanentWarnings" : "",
+                                "PhysicsCollisionSound" : "0c130d61-2b03-3abb-2d1d-3ea22eb35034",
+                                "PhysicsFollowAnimation" : false,
+                                "PhysicsOpenTemplate" : "",
+                                "PhysicsTemplate" : "3f260237-b3c2-9898-844d-b292edf9d250",
+                                "PickupSound" : "28ea7a9f-b66a-3410-7985-d7cd5cb896f0",
+                                "Race" : -1,
+                                "ReceiveDecal" : false,
+                                "ReferencedInTimeline" : false,
+                                "RenderChannel" : 4,
+                                "SeeThrough" : false,
+                                "ShadowPhysicsProxy" : "",
+                                "ShootThroughType" : 6,
+                                "ShortDescription" :
+                                {
+                                        "ArgumentString" :
+                                        {
+                                                "Handle" : "ls::TranslatedStringRepository::s_HandleUnknown",
+                                                "Version" : 0
+                                        },
+                                        "Handle" :
+                                        {
+                                                "Handle" : "ls::TranslatedStringRepository::s_HandleUnknown",
+                                                "Version" : 0
+                                        }
+                                },
+                                "ShortDescriptionParams" : "",
+                                "ShowAttachedSpellDescriptions" : false,
+                                "SoundAttenuation" : -1,
+                                "SoundInitEvent" : "",
+                                "SpeakerGroups" : {},
+                                "Stats" : "WPN_Shortbow",
+                                "StatusList" : {},
+                                "StoryItem" : false,
+                                "TechnicalDescription" :
+                                {
+                                        "ArgumentString" :
+                                        {
+                                                "Handle" : "ls::TranslatedStringRepository::s_HandleUnknown",
+                                                "Version" : 0
+                                        },
+                                        "Handle" :
+                                        {
+                                                "Handle" : "ls::TranslatedStringRepository::s_HandleUnknown",
+                                                "Version" : 0
+                                        }
+                                },
+                                "TechnicalDescriptionParams" : "",
+                                "TemplateName" : "",
+                                "TimelineCameraRigOverride" : "00000000-0000-0000-0000-000000000000",
+                                "Tooltip" : 2,
+                                "Transform" :
+                                {
+                                        "Scale" :
+                                        [
+                                                1.0,
+                                                1.0,
+                                                1.0
+                                        ],
+                                        "Translate" :
+                                        [
+                                                0.0,
+                                                0.0,
+                                                0.0
+                                        ]
+                                },
+                                "TreasureLevel" : -1,
+                                "TreasureOnDestroy" : false,
+                                "UnequipSound" : "503428af-9061-40a7-b9c4-64c8ec78fff3",
+                                "Unimportant" : false,
+                                "UnknownDescription" :
+                                {
+                                        "ArgumentString" :
+                                        {
+                                                "Handle" : "ls::TranslatedStringRepository::s_HandleUnknown",
+                                                "Version" : 0
+                                        },
+                                        "Handle" :
+                                        {
+                                                "Handle" : "ls::TranslatedStringRepository::s_HandleUnknown",
+                                                "Version" : 0
+                                        }
+                                },
+                                "UnknownDisplayName" :
+                                {
+                                        "ArgumentString" :
+                                        {
+                                                "Handle" : "ls::TranslatedStringRepository::s_HandleUnknown",
+                                                "Version" : 0
+                                        },
+                                        "Handle" :
+                                        {
+                                                "Handle" : "ls::TranslatedStringRepository::s_HandleUnknown",
+                                                "Version" : 0
+                                        }
+                                },
+                                "UseOcclusion" : true,
+                                "UseOnDistance" : false,
+                                "UsePartyLevelForTreasureLevel" : false,
+                                "UseRemotely" : false,
+                                "UseSound" : "",
+                                "V4_0_0_26Flag" : false,
+                                "VisualTemplate" : "bbf74777-5e04-3b9f-a6b8-375277365b07",
+                                "Wadable" : false,
+                                "WadableSurfaceType" : 13,
+                                "WalkOn" : false,
+                                "WalkThrough" : true,
+                                "field_50" : 7040
+                        },
+                        "Totem" : false,
+                        "TransformChanged" : false,
+                        "TreasureGenerated" : false,
+                        "TreasureLevel" : -1,
+                        "UnEquipLocked" : false,
+                        "UnsoldGenerated" : false,
+                        "UseRemotely" : false,
+                        "WakePhysics" : false,
+                        "WalkOn" : false,
+                        "WalkThrough" : false,
+                        "field_10" : "Entity (02000001000050f1)",
+                        "field_68" : null,
+                        "field_70" : ""
+                }
+        },
+        "ServerOsirisTag" :
+        {
+                "Tags" : {}
+        },
+        "ServerTemplateTag" :
+        {
+                "Tags" :
+                {
+                        "1" : "b148cfca-53d8-4b73-b052-de08394a235e",
+                        "2" : "bb363e2e-9a11-4828-80cb-8409e347ff8a",
+                        "3" : "81197304-7116-4d7b-8ef4-207bbf636682"
+                }
+        },
+        "ServerToggledPassives" :
+        {
+                "Passives" : {}
+        },
+        "Speaker" :
+        {
+                "field_0" :
+                {
+                        "1" : "575170de-7e84-2baa-af0e-78c020807769"
+                }
+        },
+        "SpellCastCanBeTargeted" :
+        {
+                "Dummy" : 0
+        },
+        "StatusImmunities" :
+        {
+                "PersonalStatusImmunities" :
+                {
+                        "BLEEDING" : "00000000-0000-0000-0000-000000000000",
+                        "BURNING" : "00000000-0000-0000-0000-000000000000",
+                        "SG_Condition" : "00000000-0000-0000-0000-000000000000",
+                        "SILENCED" : "00000000-0000-0000-0000-000000000000"
+                }
+        },
+        "Tag" :
+        {
+                "Tags" :
+                {
+                        "1" : "b148cfca-53d8-4b73-b052-de08394a235e",
+                        "2" : "bb363e2e-9a11-4828-80cb-8409e347ff8a",
+                        "3" : "81197304-7116-4d7b-8ef4-207bbf636682",
+                        "4" : "9360d001-0cef-49e0-a2e0-4d715d4976ea"
+                }
+        },
+        "Transform" :
+        {
+                "Transform" :
+                {
+                        "Scale" :
+                        [
+                                1.0,
+                                1.0,
+                                1.0
+                        ],
+                        "Translate" :
+                        [
+                                -48.644752502441406,
+                                2.4223337173461914,
+                                -397.79458618164062
+                        ]
+                }
+        },
+        "TurnBased" :
+        {
+                "ActedThisRoundInCombat" : false,
+                "CanAct_M" : false,
+                "Combat" : "00000000-0000-0000-0000-000000000000",
+                "Entity" : "Entity (02000001000050f1)",
+                "HadTurnInCombat" : false,
+                "IsInCombat_M" : false,
+                "RequestedEndTurn" : false,
+                "field_10" : 0,
+                "field_18" : 0,
+                "field_1C" : 0,
+                "field_20" : 0,
+                "field_24" : 0,
+                "field_28" : 0,
+                "field_8" : 0,
+                "field_A" : false,
+                "field_C" : false
+        },
+        "Use" :
+        {
+                "Boosts" : {},
+                "BoostsOnEquipMainHand" :
+                {
+                        "1" :
+                        {
+                                "Boost" : "UnlockSpell",
+                                "Params" : "Projectile_HamstringShot",
+                                "Params2" : ""
+                        }
+                },
+                "BoostsOnEquipOffHand" : {},
+                "Charges" : 0,
+                "ItemUseType" : 1,
+                "MaxCharges" : 0,
+                "Requirements" : {},
+                "field_19" : 0,
+                "field_1A" : 0,
+                "field_1B" : 0
+        },
+        "Uuid" :
+        {
+                "EntityUuid" : "575170de-7e84-2baa-af0e-78c020807769"
+        },
+        "Value" :
+        {
+                "Rarity" : 0,
+                "Unique" : false,
+                "Value" : 16
+        },
+        "Weapon" :
+        {
+                "Ability" : "Dexterity",
+                "DamageDice" : "D6",
+                "DamageRange" : 30.0,
+                "Rolls" :
+                {
+                        "Dexterity" :
+                        {
+                                "1" :
+                                {
+                                        "AmountOfDices" : 1,
+                                        "DiceAdditionalValue" : 0,
+                                        "DiceValue" : "D6",
+                                        "field_8" : 0
+                                }
+                        }
+                },
+                "Rolls2" : {},
+                "VersatileDamageDice" : "Default",
+                "WeaponGroup" : 1,
+                "WeaponProperties" : 9218,
+                "WeaponRange" : 18.0,
+                "field_38" : {}
+        },
+        "Wielding" :
+        {
+                "Owner" : "Entity (0200000100004f96)"
+        }
+}

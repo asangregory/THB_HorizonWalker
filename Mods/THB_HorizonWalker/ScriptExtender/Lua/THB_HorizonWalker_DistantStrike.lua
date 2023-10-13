@@ -1,3 +1,4 @@
+debugEnabled = false -- enable to debug
 -- Table to store distant strikers to prevent issues with more than one horizon walker using distant strike at once.
 distantStrikers = {}
 -- Character information for the individual distant strikers.
@@ -25,6 +26,7 @@ function resetDistantStriker(distantStriker)
 end
 
 function distantStrikerInfo(GUID)
+    if debugEnabled then print("DEBUG: distantStrikerInfo", GUID) end
     local entity = tostring(Ext.Entity.Get(tostring(GUID)))
     if (distantStrikers[entity] == nil) then
         distantStrikers[entity] = distantStriker:new()
@@ -34,6 +36,7 @@ function distantStrikerInfo(GUID)
 end
 
 function isDistantStriker(GUID)
+    if debugEnabled then print("DEBUG: isDistantStriker", GUID) end
     local entity = tostring(Ext.Entity.Get(tostring(GUID)))
     return distantStrikers[entity] ~= nil or isTrue(Osi.HasPassive(GUID, "DistantStrike") == 1)
 end
@@ -41,6 +44,7 @@ end
 -- Add distant strikers on turn start to gather their info.
 -- This should also create a new 'distantStrikerInfo' instance every turn so that info does not carry over turns.
 Ext.Osiris.RegisterListener("TurnStarted", 1, "before", function (character)
+    if debugEnabled then print("DEBUG: TurnStarted", character) end
     if (isTrue(Osi.HasPassive(character, "DistantStrike") == 1)) then
         local char = distantStrikerInfo(character)
         resetDistantStriker(char)
@@ -48,6 +52,7 @@ Ext.Osiris.RegisterListener("TurnStarted", 1, "before", function (character)
 end)
 
 Ext.Osiris.RegisterListener("CombatEnded", 1, "after", function (combatGUID)
+    if debugEnabled then print("DEBUG: CombatEnded", combatGUID) end
     for k, v in pairs(distantStrikers) do
         -- Wipe distant strikers at end of combat
         distantStrikers[k] = nil
@@ -55,6 +60,7 @@ Ext.Osiris.RegisterListener("CombatEnded", 1, "after", function (combatGUID)
 end)
 
 Ext.Osiris.RegisterListener("UsingSpell", 5, "before", function (character, spell, spellType, spellElement, storyActionID)
+    if debugEnabled then print("DEBUG: UsingSpell", character, spell, spellType, spellElement, storyActionID) end
     if (isTrue(Osi.HasPassive(character, "DistantStrike") == 1)) then
         local char = distantStrikerInfo(character)
         if (spell == "Teleportation_DistantStrikeRanged" or spell == "Teleportation_DistantStrikeMelee") then
@@ -71,6 +77,7 @@ Ext.Osiris.RegisterListener("UsingSpell", 5, "before", function (character, spel
 end)
 
 Ext.Osiris.RegisterListener("StatusApplied", 4, "after", function(target, status, caster, _)
+    if debugEnabled then print("DEBUG: StatusApplied", target, status, caster) end
     if (status == "DISTANT_STRIKE_TARGET") then
         -- attach the target to the source (distant striker)
         local char = distantStrikerInfo(caster)
@@ -79,13 +86,20 @@ Ext.Osiris.RegisterListener("StatusApplied", 4, "after", function(target, status
 end)
 
 Ext.Osiris.RegisterListener("CastedSpell", 5, "after", function(character, spell, spellType, spellElement, storyActionID)
+    if debugEnabled then print("DEBUG: CastedSpell", character, spell, spellType, spellElement, storyActionID) end
     if (isDistantStriker(character)) then
         local char = distantStrikerInfo(character)
         if (spell == "Teleportation_DistantStrikeRanged") then
             if (char.currentTarget == nil) then
                 teleportBack(character)
             else
-                if (isTrue(Osi.HasRangedWeaponEquipped(character, "Mainhand"))) then
+                local rangeToTarget = Osi.GetDistanceTo(character, char.currentTarget)
+                if debugEnabled then print("DEBUG: Range To Target: ", rangeToTarget) end
+                local rangedMainWeaponRange = Ext.Entity.Get(GetEquippedItem(character, "Ranged Main Weapon")).Weapon.WeaponRange
+                if debugEnabled then print("DEBUG: Ranged Main Weapon Range: ", rangedMainWeaponRange) end
+                local targetSize = Ext.Entity.Get(char.currentTarget).ObjectSize.Size
+                if debugEnabled then print("DEBUG: Target Size: ", targetSize) end
+                if (isTrue(Osi.HasRangedWeaponEquipped(character, "Mainhand")) and rangeToTarget <= (rangedMainWeaponRange + (targetSize / 2))) then
                     makeDistantStrikeAttack("Ranged", character, char.currentTarget)
                 else
                     teleportBack(character)
@@ -96,7 +110,13 @@ Ext.Osiris.RegisterListener("CastedSpell", 5, "after", function(character, spell
             if (char.currentTarget == nil) then
                 teleportBack(character)
             else
-                if (isTrue(Osi.HasMeleeWeaponEquipped(character, "Mainhand"))) then
+                local rangeToTarget = Osi.GetDistanceTo(character, char.currentTarget)
+                if debugEnabled then print("DEBUG: Range To Target: ", rangeToTarget) end
+                local meleeMainWeaponRange = Ext.Entity.Get(GetEquippedItem(character, "Melee Main Weapon")).Weapon.WeaponRange
+                if debugEnabled then print("DEBUG: Melee Main Weapon Range: ", meleeMainWeaponRange) end
+                local targetSize = Ext.Entity.Get(char.currentTarget).ObjectSize.Size
+                if debugEnabled then print("DEBUG: Target Size: ", targetSize) end
+                if (isTrue(Osi.HasMeleeWeaponEquipped(character, "Mainhand")) and rangeToTarget <= (meleeMainWeaponRange + (targetSize / 2))) then
                     makeDistantStrikeAttack("Melee", character, char.currentTarget)
                 else
                     teleportBack(character)
@@ -116,6 +136,7 @@ Ext.Osiris.RegisterListener("CastedSpell", 5, "after", function(character, spell
 end)
 
 Ext.Osiris.RegisterListener("TimerFinished", 1, "after", function (event)
+    if debugEnabled then print("DEBUG: TimerFinished", event) end
     for k, v in pairs(distantStrikers) do
         local character = tostring(distantStrikers[k].charGUID)
         if (character == event) then
@@ -130,6 +151,7 @@ Ext.Osiris.RegisterListener("TimerFinished", 1, "after", function (event)
 end)
 
 function makeDistantStrikeAttack(MeleeOrRanged, attacker, target)
+    if debugEnabled then print("DEBUG: makeDistantStrikeAttack", MeleeOrRanged, attacker, target) end
     local char = distantStrikerInfo(attacker)
     local isExtra = isTrue(Osi.HasAppliedStatus(attacker, "DISTANT_STRIKE_EXTRA"))
     if isExtra then
@@ -152,6 +174,7 @@ function makeDistantStrikeAttack(MeleeOrRanged, attacker, target)
 end
 
 function addDistantStrikeTarget(attacker, target)
+    if debugEnabled then print("DEBUG: addDistantStrikeTarget", attacker, target) end
     local char = distantStrikerInfo(attacker)
     if (char.targetList[tostring(target)] ~= true) then
         char.targetList[tostring(target)] = true -- Add target to attacker's attacked targets
@@ -163,6 +186,7 @@ function addDistantStrikeTarget(attacker, target)
 end
 
 function refreshDistantStrike(character)
+    if debugEnabled then print("DEBUG: refreshDistantStrike", character) end
     local char = distantStrikerInfo(character)
     if (char.distantStrikeCharges > 0 and not canAttack(character)) then
         addStatus(character, "DISTANT_STRIKE_EXTRA")
@@ -172,6 +196,7 @@ function refreshDistantStrike(character)
 end
 
 function teleportBack(character)
+    if debugEnabled then print("DEBUG: teleportBack", character) end
     local char = distantStrikerInfo(character)
     local postCastActionPoints = getActionPointCount(character)
     local hasAnyExtraAttack = hasAnyExtraAttack(character)
@@ -212,10 +237,12 @@ extraAttackStatuses = {
 }
 
 function canAttack(character)
+    if debugEnabled then print("DEBUG: canAttack", character) end
     return hasAnyExtraAttack(character) or getActionPointCount(character) ~= 0.0
 end
 
 function getActionPointCount(character)
+    if debugEnabled then print("DEBUG: getActionPointCount", character) end
     return Osi.GetActionResourceValuePersonal(character, "ActionPoint", 0)
 end
 
@@ -233,6 +260,7 @@ function addStatus(target, status, allowStacking, duration, force, source)
     duration = duration or 1
     force = force or 1
     source = source or target
+    if debugEnabled then print("DEBUG: addStatus", target, status, allowStacking, duration, force, source) end
     if (allowStacking) then
         Osi.ApplyStatus(target, status, duration, force, source)
     else

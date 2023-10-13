@@ -11,6 +11,7 @@ Ext.Osiris.RegisterListener("StatusTagCleared", 5, "after", function (character,
 Ext.Osiris.RegisterListener("TagCleared", 2, "after", function(target, tag) print("STATUS TAG CLEARED 2: " .. target, tag) end)
 Ext.Osiris.RegisterListener("TagSet", 2, "after", function(target, tag) print("STATUS TAG SET 2: " .. target, tag) end)
 Ext.Osiris.RegisterListener("CharacterTagEvent", 3, "after", function(character, tag, event) print("CHARACTER TAG EVENT: " .. character, tag, event) end)
+Ext.Osiris.RegisterListener("StartedPreviewingSpell", 4, "after", function (caster, spell, isMostPowerful, hasMultipleLevels) print(caster, spell, isMostPowerful, hasMultipleLevels) end)
 
 Ext.Osiris.RegisterListener("UsingSpell", 5, "before", function (character, spell, spellType, spellElement, storyActionID) print("Using Spell:", type(character), character, spell, spellType, spellElement, storyActionID) end)
 Ext.Osiris.RegisterListener("CastedSpell", 5, "after", function(character, spell, spellType, spellElement, storyActionID) print("Casted Spell:", character, spell, spellType, spellElement, storyActionID) end)

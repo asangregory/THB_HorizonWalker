@@ -45,3 +45,9 @@ m
 =Mods/THB_HorizonWalker/ScriptExtender/Lua/BootstrapClient.lua,0\7\07682f494b2a50b1289f4f6b3f7361708bc0f383
 Å
 QMods/THB_HorizonWalker/ScriptExtender/Lua/THB_HorizonWalker_DistantStrike_OLD.lua,4\2\42fcd4e7d2d22419212d1a52eac0990d88be0627
+f
+6Mods/THB_HorizonWalker/ScriptExtender/Lua/Shortbow.txt,6\b\6bffeffc5c984b985adafd65e2c57834970c2cb7
+b
+2Mods/THB_HorizonWalker/ScriptExtender/Lua/Char.txt,a\7\a7248ff18f2ad87ada8bfaf82a56a8b15b70874f
+m
+=Mods/THB_HorizonWalker/ScriptExtender/Lua/DealDamageEvent.txt,6\d\6df8cb44022b773d9af99244b3e0641e0f2611f8
