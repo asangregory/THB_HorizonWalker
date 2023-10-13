@@ -1,57 +1,71 @@
-new entry "EXTRA_ATTACK"
+new entry "Target_HuntersMark"
+type "SpellData"
+data "SpellType" "Target"
+data "Level" "1"
+data "SpellSchool" "Divination"
+data "ConcentrationSpellID" "Target_HuntersMark_Reapply"
+data "SpellProperties" "ApplyStatus(SELF,HUNTERS_MARK_OWNER,100,-1);ApplyStatus(HUNTERS_MARK,100,-1)"
+data "TargetRadius" "18"
+data "TargetConditions" "Character() and not Self() and not (not Player(context.Source) and not Enemy()) and not HasStatus('DOWNED')"
+data "Icon" "Spell_Divination_HuntersMark"
+data "DisplayName" "he0912b6fge4b5g4b8fgbc26ge67f24b680d1;1"
+data "Description" "hbf18c5f4g3952g4e08gaeb6ga9785601dd2c;3"
+data "DescriptionParams" "DealDamage(1d6,MainWeaponDamageType)"
+data "ExtraDescription" "hd3bd4b92ge022g49e2g916cg68ea8824882a;2"
+data "TooltipDamageList" "DealDamage(1d6,MainWeaponDamageType,,,,ad727a13-c6f0-4b5b-aefd-aac79c6ed46e)"
+data "TooltipStatusApply" "ApplyStatus(HUNTERS_MARK,100,-1)"
+data "TooltipUpcastDescription" "6ff1780a-855a-414c-a8bf-811251537206"
+data "CastSound" "Spell_Cast_Debuff_HuntersMark_L1to3"
+data "TargetSound" "Spell_Impact_Debuff_HuntersMark_L1to3"
+data "VocalComponentSound" "Vocal_Component_HuntersMark"
+data "CastTextEvent" "Cast"
+data "CycleConditions" "Enemy() and not Dead()"
+data "UseCosts" "BonusActionPoint:1;SpellSlotsGroup:1:1:1"
+data "SpellAnimation" "9313094a-bae2-454f-9701-f920d0e8e98d,,;,,;3e441d3f-11f9-432d-877c-c0ba4d92c74a,,;8b7ae969-2a04-4720-9685-3bde54c18ffe,,;808fdfab-2e6c-472e-b3c4-19ce4a719d9d,,;,,;ea745d30-eb87-447f-b190-c81298e27d9c,,;,,;,,"
+data "VerbalIntent" "Debuff"
+data "SpellStyleGroup" "Class"
+data "SpellFlags" "IsSpell;HasVerbalComponent;HasHighGroundRangeExtension;IsConcentration;IsHarmful"
+data "MemoryCost" "1"
+data "PrepareEffect" "de6dddd8-8a32-4db1-a521-70706648a83b"
+data "CastEffect" "0340b957-f9eb-45bc-9c6f-d4def37f5249"
+data "TargetEffect" "7537e8f0-1897-4a66-83fe-7f58e9dbd12e"
+
+new entry "HUNTERS_MARK"
 type "StatusData"
 data "StatusType" "BOOST"
-data "DisplayName" "h322e38eeg690eg4d35gb9a7g511b9e42428e;1"
-data "Description" "h5131f06bgff9ag4245g954dgcfa50b927031;2"
-data "Icon" "PassiveFeature_ExtraAttack"
-data "StackId" "EXTRA_ATTACK"
-data "StackPriority" "20"
-data "TickType" "StartTurn"
-data "Boosts" "UnlockSpellVariant(ExtraAttackCheck(),ModifyUseCosts(Replace,ActionPoint,0,0,ActionPoint),ModifyIconGlow(),ModifyTooltipDescription())"
-data "RemoveConditions" "(HasStringInSpellRoll('WeaponAttack') or HasStringInSpellRoll('UnarmedAttack') or SpellId('Target_CommandersStrike')) and HasUseCosts('ActionPoint',false,context.Target) and not IsOffHandAttack()"
-data "RemoveEvents" "OnSpellCast"
-data "StatusPropertyFlags" "DisableCombatlog;DisablePortraitIndicator;DisableOverhead;ApplyToDead"
+data "DisplayName" "h38ea4f90g1325g4370g88d1g28b48f7699de;2"
+data "Description" "h587f4801g411bg4d92g9d70gbeef3222364d;3"
+data "Icon" "Spell_Divination_HuntersMark"
+data "SoundStart" "Spell_Status_HuntersMark_MO"
+data "SoundLoop" "Spell_Status_HuntersMark_MO_Stop"
+data "RemoveConditions" "HasStatus('KNOCKED_OUT')"
+data "RemoveEvents" "OnStatusApplied;OnAttacked"
+data "StatusPropertyFlags" "InitiateCombat;BringIntoCombat"
+data "OnApplyFunctors" "AI_ONLY:IF(not HasStatus('HUNTERS_MARK') and not IsDowned() and (not HasStatus('HUNTERS_MARK_OWNER', context.Source) or HasStatus('HUNTERS_MARK_REAPPLY', context.Source))):ApplyStatus(SELF,AI_HELPER_HUNTERSMARK_OWNER,100,-1);AI_ONLY:IF(not HasStatus('HUNTERS_MARK') and not HasStatus('DOWNED') and (not HasStatus('HUNTERS_MARK_OWNER', context.Source) or HasStatus('HUNTERS_MARK_REAPPLY', context.Source))):ApplyStatus(AI_HELPER_HUNTERSMARK,100,-1);"
+data "OnRemoveFunctors" "RemoveStatus(SELF,HUNTERS_MARK_OWNER);IF(RemoveCause(StatusRemoveCause.Death)):ApplyStatus(SELF,HUNTERS_MARK_REAPPLY,100,-1,,,,,true);IF(RemoveCause(StatusRemoveCause.Condition)):ApplyStatus(SELF,HUNTERS_MARK_REAPPLY,100,-1,,,,,true)"
+data "ApplyEffect" "5a259bdd-10d5-453a-9aee-1e85a986baf4"
+data "StatusEffect" "0d122bff-6d13-4373-a807-b8663d48559e"
 
-new entry "EXTRA_ATTACK_Q"
+new entry "HUNTERS_MARK_OWNER"
 type "StatusData"
 data "StatusType" "BOOST"
-data "DisplayName" "h82d1a58ag3cd7g4528g80a3g9102cfba345a;1"
-data "StackId" "EXTRA_ATTACK"
-data "StackPriority" "10"
-data "TickType" "EndTurn"
-data "RemoveConditions" "not HasHigherPriorityExtraAttackQueued('EXTRA_ATTACK_Q') and not HasAnyExtraAttack()"
-data "RemoveEvents" "OnStatusRemoved"
-data "StatusPropertyFlags" "DisableCombatlog;DisablePortraitIndicator;DisableOverhead;ApplyToDead"
-data "OnRemoveFunctors" "IF(RemoveCause(StatusRemoveCause.Condition)):ApplyStatus(EXTRA_ATTACK,100,1)"
+data "DisplayName" "h0046ecf9g38dbg4597gb751g9874c99ca176;2"
+data "Description" "hdcd6f791g75ceg4217g8200g8684a00de43a;1"
+data "Icon" "Spell_Divination_HuntersMark"
+data "StackId" "HUNTERS_MARK_OWNER"
+data "Passives" "HuntersMark"
+data "TickFunctors" "AI_ONLY:ApplyStatus(AI_HELPER_HUNTERSMARK_OWNER,100,1);"
+data "StatusPropertyFlags" "DisableOverhead;DisableCombatlog;DisablePortraitIndicator"
 
-new entry "ExtraAttack"
+new entry "HuntersMark"
 type "PassiveData"
-data "DisplayName" "hcf90a672g10deg4b3egad4fg9094c6ac6224;1"
-data "Description" "he37249cfg5d71g499cg82d9gc369133f2066;2"
-data "Icon" "PassiveFeature_ExtraAttack"
+data "DisplayName" "h60e7c307g97bag4739gabb2g23296582836f;2"
+data "Description" "h1d582117g48f0g40d0gba67g3f2b3b9bacdc;2"
+data "DescriptionParams" "DealDamage(1d6,MainMeleeWeaponDamageType)"
+data "Icon" "PassiveFeature_HuntersMark"
+data "PriorityOrder" "2"
 data "Properties" "Highlighted"
-data "StatsFunctorContext" "OnCast;OnStatusRemoved"
-data "Conditions" "
-    (not context.HasContextFlag(StatsFunctorContext.OnStatusRemoved)
-    and (HasStringInSpellRoll('WeaponAttack') or HasStringInSpellRoll('UnarmedAttack') or SpellId('Target_CommandersStrike') or SpellId('Projectile_ArrowOfSmokepowder'))
-    and HasUseCosts('ActionPoint', true)
-    and not Tagged('EXTRA_ATTACK_BLOCKED',context.Source)
-    and TurnBased(context.Source))
-    or
-    (context.HasContextFlag(StatsFunctorContext.OnStatusRemoved)
-    and StatusId('INITIAL_ATTACK_TECHNICAL')
-    and TurnBased())
-"
-data "StatsFunctors" "
-    IF(HasAnyExtraAttack(context.Source) and not context.HasContextFlag(StatsFunctorContext.OnStatusRemoved))
-    :ApplyStatus(SELF,EXTRA_ATTACK_Q,100,1);
-
-    IF(not HasAnyExtraAttack(context.Source) and not context.HasContextFlag(StatsFunctorContext.OnStatusRemoved))
-    :ApplyStatus(SELF,EXTRA_ATTACK,100,1);
-
-    IF(HasAnyExtraAttack(context.Target) and context.HasContextFlag(StatsFunctorContext.OnStatusRemoved))
-    :ApplyStatus(EXTRA_ATTACK_Q,100,1);
-
-    IF(not HasAnyExtraAttack(context.Target) and context.HasContextFlag(StatsFunctorContext.OnStatusRemoved))
-    :ApplyStatus(EXTRA_ATTACK,100,1)
-"
+data "Boosts" "IF(HasStatus('HUNTERS_MARK',context.Target,context.Source) and IsWeaponAttack() and HasDamageEffectFlag(DamageFlags.Hit)):CharacterWeaponDamage(1d6)"
+data "StatsFunctorContext" "OnAttack"
+data "Conditions" "HasStatus('HUNTERS_MARK',context.Target,context.Source) and IsWeaponAttack() and HasDamageEffectFlag(DamageFlags.Hit) and TotalAttackDamageDoneGreaterThan(0)"
+data "StatsFunctors" "ApplyStatus(PASSIVE_HUNTERS_MARK,100,0)"

@@ -1,5 +1,4 @@
-S >> Ext.Events.DealDamage:Subscribe(function(e) _D(e) end)
-S >> {
+{
         "ActionPrevented" : false,
         "CanPreventAction" : false,
         "Caster" : "Entity (0200000400006f19)",

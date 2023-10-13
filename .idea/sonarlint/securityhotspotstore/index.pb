@@ -37,14 +37,10 @@ w
 GMods/THB_HorizonWalker/ScriptExtender/Lua/THB_HorizonWalker_General.lua,9\e\9e7aeee786d56aaf038aee5968965bd467c88c09
 }
 MMods/THB_HorizonWalker/ScriptExtender/Lua/THB_HorizonWalker_PlanarWarrior.lua,e\e\eeedde0cbaabe8abf4413bc84dc13929f3040079
-d
-4Mods/THB_HorizonWalker/ScriptExtender/Lua/TESTER.lua,1\b\1b716484a8269b56ea68659199313ad72827c44f
 }
 MMods/THB_HorizonWalker/ScriptExtender/Lua/THB_HorizonWalker_DistantStrike.lua,9\6\96fb4400fc224b33bd9464564dd1e5bc3345e92f
 m
 =Mods/THB_HorizonWalker/ScriptExtender/Lua/BootstrapClient.lua,0\7\07682f494b2a50b1289f4f6b3f7361708bc0f383
-Å
-QMods/THB_HorizonWalker/ScriptExtender/Lua/THB_HorizonWalker_DistantStrike_OLD.lua,4\2\42fcd4e7d2d22419212d1a52eac0990d88be0627
 f
 6Mods/THB_HorizonWalker/ScriptExtender/Lua/Shortbow.txt,6\b\6bffeffc5c984b985adafd65e2c57834970c2cb7
 b
