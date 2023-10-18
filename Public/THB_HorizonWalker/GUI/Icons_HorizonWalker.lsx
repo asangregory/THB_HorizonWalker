@@ -9,7 +9,7 @@
                     <attribute id="Width" type="int64" value="64"/>
                 </node>
                 <node id="TextureAtlasPath">
-                    <attribute id="Path" type="LSString" value="Assets/Textures/Icons/THB_HorizonWalker_Icons.dds"/>
+                    <attribute id="Path" type="LSString" value="Assets/Textures/Icons/Icons_HorizonWalker.dds"/>
                     <attribute id="UUID" type="FixedString" value="ec96470c-f8fe-4cb2-a78a-d86a303838a0"/>
                 </node>
                 <node id="TextureAtlasTextureSize">

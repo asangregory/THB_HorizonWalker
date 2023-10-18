@@ -1,5 +1,8 @@
 {
   "RequiredVersion": 1,
   "ModTable": "THB_HorizonWalker",
-  "FeatureFlags": ["Lua"]
+  "FeatureFlags": [
+    "Osiris",
+    "Lua"
+  ]
 }
