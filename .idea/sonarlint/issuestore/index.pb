@@ -17,12 +17,6 @@ MMods/THB_HorizonWalker/ScriptExtender/Lua/THB_HorizonWalker_PlanarWarrior.lua,
 MMods/THB_HorizonWalker/ScriptExtender/Lua/THB_HorizonWalker_DistantStrike.lua,9\6\96fb4400fc224b33bd9464564dd1e5bc3345e92f
 m
 =Mods/THB_HorizonWalker/ScriptExtender/Lua/BootstrapClient.lua,0\7\07682f494b2a50b1289f4f6b3f7361708bc0f383
-g
-7Mods/THB_HorizonWalker/ScriptExtender/Lua/Shortbow.json,3\0\30fd145e61e3ca6cfbfa66a9756fb9d9e2d59656
-c
-3Mods/THB_HorizonWalker/ScriptExtender/Lua/Char.json,5\2\5268a607f2d3beedb503c0813d70e243f42f1e75
-n
->Mods/THB_HorizonWalker/ScriptExtender/Lua/DealDamageEvent.json,5\f\5fb0a64679fbf3986db266fbf278b883377055d8
 e
 5Scripts/thoth/helpers/THB_HorizonWalker_Functions.khn,5\9\597e329651620e2e330766d7515820ea1fa77731
 x
