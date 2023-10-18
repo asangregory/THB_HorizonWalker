@@ -1,4 +1,4 @@
-Ext.Require("THB_HorizonWalker_General.lua")
+Ext.Require("InitCompatibilityFramework.lua")
 Ext.Require("THB_HorizonWalker_PlanarWarrior.lua")
 Ext.Require("THB_HorizonWalker_DistantStrike.lua")
 

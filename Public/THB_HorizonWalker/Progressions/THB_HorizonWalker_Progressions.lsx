@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<save>
+	<version major="4" minor="0" revision="9" build="330"/>
+	<region id="Progressions">
+		<node id="root">
+			<children>
+				<node id="Progression"> Nothing
+					<attribute id="Level" type="uint8" value="1"/>
+					<attribute id="Name" type="LSString" value="HorizonWalker"/>
+					<attribute id="ProgressionType" type="uint8" value="1"/>
+					<attribute id="Selectors" type="LSString" value="AddSpells(196e8941-d599-4e52-8740-d5ffbe4485fb);SelectAbilityBonus(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,AbilityBonus,5,5);"/> ----- TODO: REMOVE ME
+					<attribute id="PassivesAdded" type="LSString" value="DistantStrike;ExtraAttack;"/>
+					<attribute id="TableUUID" type="guid" value="bfdb3786-b8de-42f1-80b9-bde352681085"/>
+					<attribute id="UUID" type="guid" value="8569e8c7-9e0b-40c5-9410-050c4e98ea7f"/>
+				</node>
+				<node id="Progression"> Nothing
+					<attribute id="Level" type="uint8" value="2"/>
+					<attribute id="Name" type="LSString" value="HorizonWalker"/>
+					<attribute id="ProgressionType" type="uint8" value="1"/>
+					<attribute id="TableUUID" type="guid" value="bfdb3786-b8de-42f1-80b9-bde352681085"/>
+					<attribute id="UUID" type="guid" value="a9d84852-3ea2-4fc7-9715-a9aef4a38976"/>
+				</node>
+				<node id="Progression"> Protection from evil and good, Planar Warrior, Planar Blast (Homebrew Detect Portal Replacement)
+					<attribute id="Level" type="uint8" value="3"/>
+					<attribute id="Name" type="LSString" value="HorizonWalker"/>
+					<attribute id="ProgressionType" type="uint8" value="1"/>
+					<attribute id="Selectors" type="LSString" value="AddSpells(196e8941-d599-4e52-8740-d5ffbe4485fb)"/>
+					<attribute id="TableUUID" type="guid" value="bfdb3786-b8de-42f1-80b9-bde352681085"/>
+					<attribute id="UUID" type="guid" value="0a571d98-cb06-4882-83e7-7d3d310c5f01"/>
+				</node>
+				<node id="Progression"> Misty Step
+					<attribute id="Level" type="uint8" value="5"/>
+					<attribute id="Name" type="LSString" value="HorizonWalker"/>
+					<attribute id="ProgressionType" type="uint8" value="1"/>
+					<attribute id="Selectors" type="LSString" value="AddSpells(6f97a274-0cc2-4ad8-b70a-18790688325d)"/>
+					<attribute id="TableUUID" type="guid" value="bfdb3786-b8de-42f1-80b9-bde352681085"/>
+					<attribute id="UUID" type="guid" value="be3a8ce5-4b16-403c-9abc-b8e3ef74736d"/>
+				</node>
+				<node id="Progression"> Ethereal Step
+					<attribute id="Level" type="uint8" value="7"/>
+					<attribute id="Name" type="LSString" value="HorizonWalker"/>
+					<attribute id="ProgressionType" type="uint8" value="1"/>
+					<attribute id="Selectors" type="LSString" value="AddSpells(bb4c1217-f5b5-42ae-a607-d51621f3e0d0)"/>
+					<attribute id="TableUUID" type="guid" value="bfdb3786-b8de-42f1-80b9-bde352681085"/>
+					<attribute id="UUID" type="guid" value="dd83a331-c159-4064-b764-4147312bd3f3"/>
+				</node>
+				<node id="Progression"> Haste
+					<attribute id="Level" type="uint8" value="9"/>
+					<attribute id="Name" type="LSString" value="HorizonWalker"/>
+					<attribute id="ProgressionType" type="uint8" value="1"/>
+					<attribute id="Selectors" type="LSString" value="AddSpells(61a923b4-9a71-473f-a773-b5d570c7438a)"/>
+					<attribute id="TableUUID" type="guid" value="bfdb3786-b8de-42f1-80b9-bde352681085"/>
+					<attribute id="UUID" type="guid" value="29913484-8227-4c3a-a25e-d6116c7b712c"/>
+				</node>
+				<node id="Progression"> Distant Strike and Planar Warrior damage increases to 2d8
+					<attribute id="Level" type="uint8" value="11"/>
+					<attribute id="Name" type="LSString" value="HorizonWalker"/>
+					<attribute id="ProgressionType" type="uint8" value="1"/>
+					<attribute id="Selectors" type="LSString" value=""/>
+					<attribute id="TableUUID" type="guid" value="bfdb3786-b8de-42f1-80b9-bde352681085"/>
+					<attribute id="UUID" type="guid" value="f2c7f571-f368-462c-94fd-d2a3a09b0954"/>
+				</node>
+				<!--
+                SelectSkills(6a4f8598-3a17-42d1-beac-d7ced582bafa,2);
+                AddSpells(f8799582-ef4c-49b7-88eb-2120aecab569);
+                SelectPassives(da3203d8-750a-4de1-b8eb-1eccfccddf46,1,FightingStyle);
+                SelectAbilityBonus(b9149c8e-52c8-46e5-9cb6-fc39301c05fe,AbilityBonus,2,1)
+                -->
+			</children>
+		</node>
+	</region>
+</save>
