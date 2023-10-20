@@ -32,23 +32,7 @@
 						</node>
 					</children>
 				</node>
-				<node id="Progression"> Nothing
-					<attribute id="Level" type="uint8" value="1"/>
-					<attribute id="Name" type="LSString" value="HorizonWalker"/>
-					<attribute id="ProgressionType" type="uint8" value="1"/>
-					<attribute id="Selectors" type="LSString" value=""/>
-					<attribute id="PassivesAdded" type="LSString" value=""/>
-					<attribute id="TableUUID" type="guid" value="bfdb3786-b8de-42f1-80b9-bde352681085"/>
-					<attribute id="UUID" type="guid" value="8569e8c7-9e0b-40c5-9410-050c4e98ea7f"/>
-				</node>
-				<node id="Progression"> Nothing
-					<attribute id="Level" type="uint8" value="2"/>
-					<attribute id="Name" type="LSString" value="HorizonWalker"/>
-					<attribute id="ProgressionType" type="uint8" value="1"/>
-					<attribute id="TableUUID" type="guid" value="bfdb3786-b8de-42f1-80b9-bde352681085"/>
-					<attribute id="UUID" type="guid" value="a9d84852-3ea2-4fc7-9715-a9aef4a38976"/>
-				</node>
-				<node id="Progression"> Protection from evil and good, Planar Warrior, Planar Blast (Homebrew Detect Portal Replacement)
+				<node id="Progression"> Protection from evil and good, Planar Warrior
 					<attribute id="Level" type="uint8" value="3"/>
 					<attribute id="Name" type="LSString" value="HorizonWalker"/>
 					<attribute id="ProgressionType" type="uint8" value="1"/>
